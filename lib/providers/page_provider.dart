@@ -11,10 +11,17 @@ class PageProvider extends ChangeNotifier {
     'contact',
     'location'
   ];
+  int _currentIndex = 0;
 
   createScrollController(String routeName) {
-    scrollerController =
-        PageController(initialPage: getPageIndex(routeName));
+    scrollerController = PageController(initialPage: getPageIndex(routeName));
+    scrollerController.addListener(() {
+      final index = (scrollerController.page ?? 0).round();
+      if (index != _currentIndex) {
+        html.window.history.pushState(null, 'none', '#/${_pages[index]}');
+        _currentIndex = index;
+      }
+    });
   }
 
   int getPageIndex(String routeName) {
@@ -23,9 +30,6 @@ class PageProvider extends ChangeNotifier {
   }
 
   goTo(int index) {
-    //  final routeName = _pages[index];
-    html.window.history.pushState(null, 'none', '#/${_pages[index]}');
-
     scrollerController.animateToPage(
       index,
       duration: const Duration(milliseconds: 300),
