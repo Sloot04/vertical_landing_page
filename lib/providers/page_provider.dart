@@ -15,11 +15,14 @@ class PageProvider extends ChangeNotifier {
 
   createScrollController(String routeName) {
     scrollerController = PageController(initialPage: getPageIndex(routeName));
+    html.document.title = _pages[getPageIndex(routeName)];
+
     scrollerController.addListener(() {
       final index = (scrollerController.page ?? 0).round();
       if (index != _currentIndex) {
         html.window.history.pushState(null, 'none', '#/${_pages[index]}');
         _currentIndex = index;
+        html.document.title = _pages[index];
       }
     });
   }

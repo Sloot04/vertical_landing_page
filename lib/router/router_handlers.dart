@@ -12,4 +12,5 @@ final homeHandler = Handler(handlerFunc: (context, params) {
     pageProvider.createScrollController(page);
     return const HomePage();
   }
+  return null;
 });
