@@ -12,21 +12,35 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Stack(
-        children: [
-          const _HomeBody(),
-          Positioned(
-              right: 20,
-              top: 20,
-              child: Container(
-                width: 150,
-                height: 50,
-                color: Colors.black,
-              ))
-        ],
+      body: Container(
+        decoration: buildBoxDecoration(),
+        child: Stack(
+          children: [
+             const _HomeBody(),
+            Positioned(
+                right: 20,
+                top: 20,
+                child: Container(
+                  width: 150,
+                  height: 50,
+                  color: Colors.black,
+                ))
+          ],
+        ),
       ),
     );
   }
+
+  BoxDecoration buildBoxDecoration() => const BoxDecoration(
+        gradient: LinearGradient(
+            colors: [
+              Colors.pink,
+              Colors.purpleAccent,
+            ],
+            begin: Alignment.topCenter,
+            end: Alignment.bottomCenter,
+            stops: [0.5, 0.5]),
+      );
 }
 
 class _HomeBody extends StatelessWidget {
