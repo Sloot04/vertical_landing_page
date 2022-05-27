@@ -45,11 +45,11 @@ class _CustomAppMenuState extends State<CustomAppMenu>
             children: [
               _MenuTitle(isOpen: isOpen, controller: controller),
               if (isOpen) ...[
-                CustomMenuItem(text: 'Home', onPressed: () {}),
-                CustomMenuItem(text: 'About', onPressed: () {}),
-                CustomMenuItem(text: 'Pricing', onPressed: () {}),
-                CustomMenuItem(text: 'Contact', onPressed: () {}),
-                CustomMenuItem(text: 'Location', onPressed: () {}),
+                CustomMenuItem(text: 'Home', onPressed: () {}, delay: 0),
+                CustomMenuItem(text: 'About', onPressed: () {}, delay: 30),
+                CustomMenuItem(text: 'Pricing', onPressed: () {}, delay: 60),
+                CustomMenuItem(text: 'Contact', onPressed: () {}, delay: 90),
+                CustomMenuItem(text: 'Location', onPressed: () {}, delay: 120),
                 const SizedBox(height: 10)
               ]
             ],
@@ -80,7 +80,7 @@ class _MenuTitle extends StatelessWidget {
           AnimatedContainer(
             duration: const Duration(milliseconds: 200),
             curve: Curves.easeInOut,
-            width: isOpen ? 50 : 0,
+            width: isOpen ? 45 : 0,
           ),
           Text(
             'Menú',
