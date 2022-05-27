@@ -7,7 +7,7 @@ class PricingView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      color: Colors.deepPurple,
+      color: Colors.purpleAccent,
       child: Center(
         child: FittedBox(
           fit: BoxFit.contain,
